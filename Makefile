@@ -25,7 +25,9 @@ DEPS = ${SRCS} \
 CFLAGS = -std=gnu99 -Wall -Werror -Wmissing-prototypes
 
 ifneq ($(CC),clang)
-	CFLAGS+= -Wno-error=restrict
+	CFLAGS += -Wno-error=restrict
+else
+	CFLAGS += -DVM_DONT_USE_COMPUTED_GOTO
 endif
 
 CFLAGS += -I${CURDIR}
